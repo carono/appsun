@@ -1,0 +1,21 @@
+{
+  "name": "carono/appsun",
+  "description": "Appsun client",
+  "minimum-stability": "stable",
+  "license": "proprietary",
+  "authors": [
+    {
+      "name": "Aleksandr Kasyanov",
+      "email": "spamer2000@list.ru"
+    }
+  ],
+  "require": {
+    "php": ">=5.5.0",
+    "carono/murl": "dev-master"
+  },
+  "autoload": {
+    "psr-4": {
+      "carono\\appsun\\": ""
+    }
+  }
+}

@@ -1,0 +1,57 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "This file is @generated automatically"
+    ],
+    "hash": "8042034ac13392cd3af85e60fa17422f",
+    "content-hash": "f280373cd94b173996530e52b966b765",
+    "packages": [
+        {
+            "name": "carono/murl",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/carono/murl.git",
+                "reference": "8656c5023f8439c5534f540c7eaa1c4dbb26f987"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/carono/murl/zipball/8656c5023f8439c5534f540c7eaa1c4dbb26f987",
+                "reference": "8656c5023f8439c5534f540c7eaa1c4dbb26f987",
+                "shasum": ""
+            },
+            "type": "curl",
+            "autoload": {
+                "psr-4": {
+                    "carono\\murl\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Alexander Kasyanov",
+                    "email": "spamer2000@yandex.ru"
+                }
+            ],
+            "description": "Wrapper for curl",
+            "keywords": [
+                "curl"
+            ],
+            "time": "2015-12-18 07:15:21"
+        }
+    ],
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "stable",
+    "stability-flags": {
+        "carono/murl": 20
+    },
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": [],
+    "platform-dev": []
+}
