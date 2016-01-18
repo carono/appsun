@@ -94,8 +94,6 @@ class Appsun
 		$murl->postAsString = false;
 		$murl->postUrlEncode = false;
 		$murl->post = $post;
-		$murl->proxyHost = '127.0.0.1';
-		$murl->proxyPort = '8888';
 		if ($this->api) {
 			$murl->headers->Authorization = base64_encode($this->api . ":");
 		}
