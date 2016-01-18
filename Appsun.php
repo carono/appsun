@@ -10,7 +10,7 @@ class Appsun
 	const DIGIT_x32 = 'x32';
 	const DIGIT_x64 = 'x64';
 
-	public $url = 'http://appsun.ru';
+	public $url = 'http://appsun.ru/api';
 	public $api;
 	public $system_name;
 	public $version;
@@ -42,6 +42,24 @@ class Appsun
 		}
 	}
 
+	public function uploadFiles($files)
+	{
+		$curlFiles = [];
+		foreach ($files as $index => $file) {
+			foreach ($file as $key => $value) {
+				if ($key == "file") {
+					if (file_exists($value)) {
+						$curlFiles[] = new \CURLFile($value);
+					} else {
+						throw new Exception("File '{$value}' not found");
+					}
+				}
+			}
+		}
+		$json = $this->getContent('upload-files', ["data" => $files], $curlFiles);
+		return $json->code == 0;
+	}
+
 	/**
 	 * @param       $url
 	 * @param array $get
@@ -53,12 +71,13 @@ class Appsun
 		if (is_string($url)) {
 			$url = array_filter(explode('/', $url));
 		}
-
-		$url = $this->url . join('/', array_merge(['project', $this->system_name], $url));
+		$path = ['project', $this->system_name];
+		$url = $this->url . '/' . join('/', array_merge($path, $url));
 		if ($this->version) {
 			$get["version"] = $this->version;
 		}
-		return $url . ($get ? $get : '?' . http_build_query($get));
+
+		return $url . ($get ? '?' . http_build_query($get) : '');
 	}
 
 	/**
@@ -75,6 +94,11 @@ class Appsun
 		$murl->postAsString = false;
 		$murl->postUrlEncode = false;
 		$murl->post = $post;
+		$murl->proxyHost = '127.0.0.1';
+		$murl->proxyPort = '8888';
+		if ($this->api) {
+			$murl->headers->Authorization = base64_encode($this->api . ":");
+		}
 		$url = $this->formUrl($url, $get);
 		if ($json = json_decode($murl->getContent($url))) {
 			if (!$json->code) {
