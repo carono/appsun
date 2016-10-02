@@ -15,6 +15,14 @@ class Appsun
 	public $system_name;
 	public $version;
 
+    public function getInfo(){
+        return $this->getContent('info')->data;
+    }
+
+    public function getInstallers(){
+        return $this->getContent('installers')->data;
+    }
+
 	public function getNextVersion()
 	{
 		$json = $this->getContent('next-version');
@@ -91,6 +99,8 @@ class Appsun
 	public function getContent($url, $get = [], $post = [])
 	{
 		$murl = new MUrl();
+        $murl->proxyHost = 'localhost';
+        $murl->proxyPort = 8888;
 		$murl->postAsString = false;
 		$murl->postUrlEncode = false;
 		$murl->post = $post;
