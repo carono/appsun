@@ -99,8 +99,6 @@ class Appsun
 	public function getContent($url, $get = [], $post = [])
 	{
 		$murl = new MUrl();
-        $murl->proxyHost = 'localhost';
-        $murl->proxyPort = 8888;
 		$murl->postAsString = false;
 		$murl->postUrlEncode = false;
 		$murl->post = $post;
