@@ -29,6 +29,12 @@ class Appsun
 		return $json->data;
 	}
 
+    public function getChangeLog()
+    {
+        $json = $this->getContent('change-log');
+        return $json->data;
+    }
+
 	/**
 	 * @param        $file
 	 * @param        $slug
